@@ -1,0 +1,37 @@
+{
+  "name": "kiss-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kickstart a KISS landing page experience with Webpack and Sass.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode production",
+    "start": "webpack serve --mode development --open"
+  },
+  "keywords": [
+    "kiss",
+    "landing-page",
+    "webpack",
+    "sass"
+  ],
+  "author": "MisterZik",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.25.8",
+    "@babel/preset-env": "^7.25.8",
+    "babel-loader": "^9.2.1",
+    "copy-webpack-plugin": "^13.0.1",
+    "css-loader": "^7.1.2",
+    "html-webpack-plugin": "^5.6.5",
+    "mini-css-extract-plugin": "^2.9.1",
+    "sass": "^1.79.5",
+    "sass-loader": "^16.0.2",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
+  },
+  "dependencies": {
+    "animate.css": "^4.1.1",
+    "jquery": "^3.7.1"
+  }
+}

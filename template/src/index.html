@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>K.I.S.S – Keepin' It Simply Stupid Starter</title>
+    <meta
+      name="description"
+      content="K.I.S.S is a Webpack + Sass starter that scaffolds bold marketing pages in seconds. Ship handcrafted landers without wrestling with boilerplate."
+    />
+    <meta
+      name="keywords"
+      content="landing page starter, webpack sass template, marketing scaffold, create-kiss CLI"
+    />
+
+    <!-- Social sharing -->
+    <meta
+      property="og:title"
+      content="K.I.S.S – Lightning-fast landing pages"
+    />
+    <meta
+      property="og:description"
+      content="Spin up a complete landing page with one command using create-kiss."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/images/logo.png" />
+
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/app.css" />
+  </head>
+
+  <body class="kiss-site">
+    <header class="hero" id="top">
+      <nav class="navbar">
+        <div class="container navbar-inner">
+          <a class="navbar-brand" href="#top">
+            <img
+              src="assets/images/logo.png"
+              alt="K.I.S.S logo"
+              class="logo"
+              width="56"
+              height="56"
+              style="height: 38px"
+            />
+            <span class="brand-copy">K.I.S.S Library</span>
+          </a>
+
+          <button
+            class="nav-toggle"
+            data-nav-toggle
+            aria-expanded="false"
+            aria-controls="primary-nav"
+          >
+            <span class="sr-only">Toggle navigation</span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <ul id="primary-nav" class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#templates">Template</a></li>
+            <li><a href="#workflow">Workflow</a></li>
+            <li>
+              <a class="btn btn-outline-light" href="#cta">Get K.I.S.S</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Keepin' It Simply Stupid</p>
+          <h1>Ship bold marketing pages in minutes — not weekends.</h1>
+          <p>
+            The <strong>create-kiss</strong> CLI copies a polished Webpack +
+            Sass starter into your project, so you focus on storytelling while
+            the stack stays tidy.
+          </p>
+          <div class="hero-cta">
+            <code>npx @misterzik/create-kiss launch-day</code>
+            <a class="btn btn-primary" href="#templates">See what's included</a>
+          </div>
+          <ul class="hero-meta">
+            <li>Multi-page ready</li>
+            <li>SCSS + asset pipeline</li>
+            <li>Motion-ready sections</li>
+          </ul>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-card">
+            <img src="assets/images/iphone-screen.png" alt="Landing preview" />
+            <div class="hero-card__badge">
+              <span class="badge-pill">Scaffolded in 12s</span>
+            </div>
+          </div>
+          <img
+            src="assets/images/wavy.svg"
+            alt=""
+            class="hero-wave"
+            aria-hidden="true"
+          />
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="features" class="section-light">
+        <div class="container">
+          <div class="section-header text-center">
+            <p class="eyebrow">Why teams pick K.I.S.S</p>
+            <h2>Opinionated defaults, zero dead weight.</h2>
+            <p>
+              Everything inside <code>src/</code> is yours to tweak, while the
+              tooling stays battle-tested and boring.
+            </p>
+          </div>
+          <div class="feature-grid">
+            <article class="feature-card">
+              <h3>Designer-first layout kit</h3>
+              <p>
+                Polished hero, feature, testimonial, and pricing sections built
+                with clean SCSS partials so you can restyle instantly.
+              </p>
+            </article>
+            <article class="feature-card">
+              <h3>Modern stack defaults</h3>
+              <p>
+                Webpack 5, Babel, image/font pipelines, hot reload, and
+                tree-shaken bundles configured out of the box.
+              </p>
+            </article>
+            <article class="feature-card">
+              <h3>CLI ergonomics</h3>
+              <p>
+                Friendly prompts, name normalization, and guard rails prevent
+                overwriting existing work while keeping setup as easy as one
+                command.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="templates" class="section-dark">
+        <div class="container template-layout">
+          <div class="template-visual">
+            <img
+              src="assets/images/simon-lee-earth.jpg"
+              alt="Template preview"
+              style="border-radius: 26px;"
+            />
+          </div>
+          <div>
+            <p class="eyebrow text-accent">Inside the template</p>
+            <h2>Your entire narrative inside <code>src/</code>.</h2>
+            <ul class="template-list">
+              <li>
+                <strong>/src/index.html</strong> – hero, feature grid, trust
+                indicators.
+              </li>
+              <li>
+                <strong>/src/pages/</strong> – optional extra pages wired to
+                HtmlWebpack.
+              </li>
+              <li>
+                <strong>/src/scss/</strong> – tokens, mixins, and layout
+                partials with meaningful naming.
+              </li>
+              <li>
+                <strong>/src/js/app.js</strong> – animation hooks, sample
+                interactions, and space for your scripts.
+              </li>
+            </ul>
+            <a class="btn btn-outline-light" href="#cta">Generate my copy</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="workflow" class="section-light">
+        <div class="container">
+          <div class="section-header text-center">
+            <p class="eyebrow">3-step developer flow</p>
+            <h2>From zero to landing page faster than brewing coffee.</h2>
+          </div>
+          <div class="workflow-steps">
+            <article class="workflow-step">
+              <span class="step-number">01</span>
+              <h3>Scaffold</h3>
+              <p>
+                Run the CLI, name your project, and let K.I.S.S copy the entire
+                template.
+              </p>
+            </article>
+            <article class="workflow-step">
+              <span class="step-number">02</span>
+              <h3>Create</h3>
+              <p>
+                Edit the HTML/SCSS sections that matter. Typography, palettes,
+                and imagery are all yours.
+              </p>
+            </article>
+            <article class="workflow-step">
+              <span class="step-number">03</span>
+              <h3>Ship</h3>
+              <p>
+                <code>npm run build</code> outputs an optimized bundle ready for
+                any static host or CDN with zero additional config.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-dark testimonial">
+        <div class="container testimonial-grid">
+          <div>
+            <blockquote>
+              “Every marketing experiment deserves great visuals, not
+              boilerplate wrestling. K.I.S.S let our team draft three landing
+              pages in a single afternoon.”
+            </blockquote>
+            <p class="author">— Vimedev Agency</p>
+          </div>
+          <div class="terminal-card">
+            <div class="terminal-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <pre><code>npx @misterzik/create-kiss spring-campaign
+cd spring-campaign
+npm install
+npm run start</code></pre>
+            <p class="terminal-note">Hot reload + Sass pipeline ready.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="cta" class="section-light final-cta text-center">
+        <div class="container">
+          <p class="eyebrow">Ready to keep it simple?</p>
+          <h2>Spin up your next landing page with K.I.S.S today.</h2>
+          <p>
+            Stop rebuilding the same grid every launch. Scaffold once, remix
+            endlessly, and keep the creative energy on the experience.
+          </p>
+          <code class="cta-command">npx @misterzik/create-kiss your-brand</code>
+          <div class="cta-buttons">
+            <a
+              class="btn btn-primary"
+              href="https://www.npmjs.com/package/@misterzik/create-kiss"
+            >
+              View on npm
+            </a>
+            <a class="btn btn-outline-dark" href="docs/DEVELOPER.md"
+              >Contributor docs</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="kiss-footer">
+      <div class="container footer-layout">
+        <p>
+          &copy; <span id="year"></span> K.I.S.S Starter · Crafted by Keepin' It
+          Simply Stupid
+        </p>
+        <p>
+          <a href="https://github.com/misterzik" target="_blank" rel="noopener"
+            >GitHub</a
+          >
+          <span class="divider">·</span>
+          <a href="mailto:hello@kiss.dev">Contact</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
