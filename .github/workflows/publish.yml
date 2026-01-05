@@ -1,10 +1,8 @@
 name: Publish Package
 
 on:
-  workflow_run:
-    workflows: ["Create Release"]
-    types: [completed]
-    branches: [main]
+  release:
+    types: [published]
 
 jobs:
   build:
