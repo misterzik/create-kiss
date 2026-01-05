@@ -33,11 +33,18 @@ The generated project contains:
 
 ## Contributing / local development
 
-1. Clone the repo and install dependencies: `npm install`.
-2. Run tests: `npm test` (uses [Vitest](https://vitest.dev/)).
-3. Make changes under `template/` or the CLI in `bin/create-kiss.js`.
+All feature work happens on the `dev` branch. Please avoid pushing directly to `main`.
 
-When testing locally, you can link the package: `npm link` (or run `node bin/create-kiss.js demo-app` from the repo root and inspect the generated folder in a temporary directory).
+1. Clone the repo and install dependencies: `npm install`.
+2. Create a feature branch off `dev`: `git checkout dev && git pull && git checkout -b feat/my-change`.
+3. Run tests: `npm test` (uses [Vitest](https://vitest.dev/)).
+4. Make your changes under `template/` or the CLI in `bin/create-kiss.js`.
+5. Rebuild to ensure the scaffold still works: `npm run build`.
+6. Push your branch to `origin` and open a pull request into `dev`.
+
+When you're ready to merge to `main`, open a PR from `dev` → `main`. The PR workflow runs lint/build/test gates before merging.
+
+For local smoke testing, you can link the package: `npm link` (or run `node bin/create-kiss.js demo-app` from the repo root and inspect the generated folder in a temporary directory).
 
 ## Releasing
 
