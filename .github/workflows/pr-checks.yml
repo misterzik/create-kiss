@@ -29,5 +29,8 @@ jobs:
       - name: Run tests
         run: npm test --if-present
 
+      - name: Install template dependencies
+        run: npm ci --prefix template
+
       - name: Build template
-        run: npm run build
+        run: npm run build --prefix template
