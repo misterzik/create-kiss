@@ -1,6 +1,6 @@
 {
   "name": "@misterzik/create-kiss",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Scaffold a landing page, by Keepin' It Simply Stupid (KISS), with a starter template powered by Webpack + Sass.",
   "bin": {
     "create-kiss": "bin/create-kiss.js"
