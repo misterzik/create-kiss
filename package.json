@@ -1,28 +1,38 @@
 {
   "name": "@misterzik/create-kiss",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Scaffold a landing page, by Keepin' It Simply Stupid (KISS), with a starter template powered by Webpack + Sass.",
   "bin": {
     "create-kiss": "bin/create-kiss.js"
   },
   "files": [
     "bin",
-    "template"
+    "template-js",
+    "template-ts"
   ],
   "keywords": [
     "kiss",
     "landing-page",
     "scaffold",
     "webpack",
+    "webpack5",
     "sass",
+    "scss",
     "html",
     "css",
-    "js",
-    "jquery",
-    "bootstrap",
-    "bxslider",
-    "wowjs",
-    "scrollit"
+    "javascript",
+    "typescript",
+    "babel",
+    "starter",
+    "template",
+    "boilerplate",
+    "cli",
+    "generator",
+    "animate-css",
+    "hot-reload",
+    "dev-server",
+    "marketing",
+    "landing"
   ],
   "author": "MisterZik",
   "license": "MIT",

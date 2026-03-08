@@ -29,8 +29,14 @@ jobs:
       - name: Run tests
         run: npm test --if-present
 
-      - name: Install template dependencies
-        run: npm ci --prefix template
+      - name: Install JS template dependencies
+        run: npm ci --prefix template-js
 
-      - name: Build template
-        run: npm run build --prefix template
+      - name: Build JS template
+        run: npm run build --prefix template-js
+
+      - name: Install TS template dependencies
+        run: npm ci --prefix template-ts
+
+      - name: Build TS template
+        run: npm run build --prefix template-ts

@@ -2,8 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-
-const templateDir = path.resolve(__dirname, '..', 'template');
+const readline = require('readline');
 
 const args = process.argv.slice(2);
 const rawProjectName = args[0] || 'kiss-app';
@@ -29,7 +28,28 @@ const ensureDirectory = (dir) => {
   }
 };
 
-const copyTemplate = (destination) => {
+const promptTemplateChoice = () => {
+  return new Promise((resolve) => {
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout
+    });
+
+    console.log('\nChoose your template:');
+    console.log('  1) JavaScript (default)');
+    console.log('  2) TypeScript');
+    
+    rl.question('\nEnter your choice (1 or 2): ', (answer) => {
+      rl.close();
+      const choice = answer.trim();
+      resolve(choice === '2' ? 'typescript' : 'javascript');
+    });
+  });
+};
+
+const copyTemplate = (destination, templateType) => {
+  const templateDir = path.resolve(__dirname, '..', `template-${templateType === 'typescript' ? 'ts' : 'js'}`);
+  
   if (!fs.existsSync(templateDir)) {
     throw new Error('Template directory is missing from the package.');
   }
@@ -66,10 +86,14 @@ const updatePackageJson = (destination, finalName) => {
   fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2));
 };
 
-const main = () => {
+const main = async () => {
   try {
     ensureDirectory(targetDir);
-    copyTemplate(targetDir);
+    
+    const templateType = await promptTemplateChoice();
+    console.log(`\nUsing ${templateType === 'typescript' ? 'TypeScript' : 'JavaScript'} template...`);
+    
+    copyTemplate(targetDir, templateType);
     flattenNestedSrc(targetDir);
 
     const pkgName = formatPackageName(rawProjectName);

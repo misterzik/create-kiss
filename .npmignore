@@ -1,2 +1,17 @@
+# Don’t ship local artifacts or secrets
+.git/
+.gitignore
+npm-debug.log*
+node_modules/
+dist/
 Thumbs.db
 .npmrc
+npmrc-local.example
+npmrc-private.txt
+.env
+
+# 
+docs/
+scripts/
+template-js/node_modules/
+template-ts/node_modules/
