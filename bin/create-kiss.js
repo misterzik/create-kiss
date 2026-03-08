@@ -2,11 +2,23 @@
 
 const fs = require('fs');
 const path = require('path');
-
-const templateDir = path.resolve(__dirname, '..', 'template');
+const readline = require('readline');
 
 const args = process.argv.slice(2);
-const rawProjectName = args[0] || 'kiss-app';
+
+// Parse arguments
+let rawProjectName = 'kiss-app';
+let templateFlag = null;
+
+for (let i = 0; i < args.length; i++) {
+  if (args[i] === '--template' && args[i + 1]) {
+    templateFlag = args[i + 1];
+    i++; // Skip next arg
+  } else if (!args[i].startsWith('--')) {
+    rawProjectName = args[i];
+  }
+}
+
 const targetDir = path.resolve(process.cwd(), rawProjectName);
 
 const formatPackageName = (name) => name
@@ -29,7 +41,42 @@ const ensureDirectory = (dir) => {
   }
 };
 
-const copyTemplate = (destination) => {
+const promptTemplateChoice = () => {
+  return new Promise((resolve) => {
+    // If template flag is provided, use it
+    if (templateFlag) {
+      const type = templateFlag.toLowerCase();
+      if (type === 'ts' || type === 'typescript') {
+        return resolve('typescript');
+      }
+      return resolve('javascript');
+    }
+
+    // If not in interactive mode (CI/testing), default to JavaScript
+    if (!process.stdin.isTTY) {
+      return resolve('javascript');
+    }
+
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout
+    });
+
+    console.log('\nChoose your template:');
+    console.log('  1) JavaScript (default)');
+    console.log('  2) TypeScript');
+    
+    rl.question('\nEnter your choice (1 or 2): ', (answer) => {
+      rl.close();
+      const choice = answer.trim();
+      resolve(choice === '2' ? 'typescript' : 'javascript');
+    });
+  });
+};
+
+const copyTemplate = (destination, templateType) => {
+  const templateDir = path.resolve(__dirname, '..', `template-${templateType === 'typescript' ? 'ts' : 'js'}`);
+  
   if (!fs.existsSync(templateDir)) {
     throw new Error('Template directory is missing from the package.');
   }
@@ -66,10 +113,17 @@ const updatePackageJson = (destination, finalName) => {
   fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2));
 };
 
-const main = () => {
+const main = async () => {
   try {
     ensureDirectory(targetDir);
-    copyTemplate(targetDir);
+    
+    const templateType = await promptTemplateChoice();
+    
+    if (process.stdin.isTTY || templateFlag) {
+      console.log(`\nUsing ${templateType === 'typescript' ? 'TypeScript' : 'JavaScript'} template...`);
+    }
+    
+    copyTemplate(targetDir, templateType);
     flattenNestedSrc(targetDir);
 
     const pkgName = formatPackageName(rawProjectName);

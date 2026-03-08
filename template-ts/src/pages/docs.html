@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Documentation – K.I.S.S Starter (TypeScript)</title>
+    <meta
+      name="description"
+      content="Learn how to use the K.I.S.S starter template with TypeScript, Webpack and Sass."
+    />
+
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/app.css" />
+  </head>
+
+  <body class="kiss-site">
+    <header class="hero" style="min-height: auto; padding: 2rem 0;">
+      <nav class="navbar">
+        <div class="container navbar-inner">
+          <a class="navbar-brand" href="index.html">
+            <img
+              src="assets/images/logo.png"
+              alt="K.I.S.S logo"
+              class="logo"
+              width="56"
+              height="56"
+              style="height: 38px"
+            />
+            <span class="brand-copy">K.I.S.S Library</span>
+          </a>
+
+          <button
+            class="nav-toggle"
+            data-nav-toggle
+            aria-expanded="false"
+            aria-controls="primary-nav"
+          >
+            <span class="sr-only">Toggle navigation</span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <ul id="primary-nav" class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="docs.html">Docs</a></li>
+            <li>
+              <a class="btn btn-outline-light" href="index.html#cta">Get Started</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section-light">
+        <div class="container">
+          <div class="section-header text-center">
+            <p class="eyebrow">Documentation</p>
+            <h1>Getting Started with K.I.S.S (TypeScript)</h1>
+            <p>
+              Everything you need to know to build beautiful landing pages with
+              the K.I.S.S TypeScript starter template.
+            </p>
+          </div>
+
+          <div style="max-width: 800px; margin: 0 auto;">
+            <article style="margin-bottom: 3rem;">
+              <h2>Quick Start</h2>
+              <p>Create a new project using the CLI and select TypeScript:</p>
+              <pre style="background: #1a1a1a; color: #fff; padding: 1.5rem; border-radius: 8px; overflow-x: auto;"><code>npx @misterzik/create-kiss my-project
+# Choose option 2 for TypeScript
+cd my-project
+npm install
+npm run start</code></pre>
+            </article>
+
+            <article style="margin-bottom: 3rem;">
+              <h2>Project Structure</h2>
+              <p>Your scaffolded TypeScript project contains:</p>
+              <pre style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px; overflow-x: auto;"><code>my-project/
+├── src/
+│   ├── index.html          # Main landing page
+│   ├── pages/              # Additional pages
+│   │   └── docs.html       # This documentation page
+│   ├── js/
+│   │   └── app.ts          # TypeScript entry point
+│   ├── scss/
+│   │   └── app.scss        # Sass entry point
+│   └── assets/
+│       └── images/         # Image assets
+├── tsconfig.json           # TypeScript configuration
+├── webpack.config.js       # Webpack configuration
+└── package.json            # Dependencies and scripts</code></pre>
+            </article>
+
+            <article style="margin-bottom: 3rem;">
+              <h2>Available Scripts</h2>
+              <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 1rem;">
+                  <strong><code>npm run start</code></strong><br />
+                  Starts the development server with hot reload at <code>http://localhost:9000</code>
+                </li>
+                <li style="margin-bottom: 1rem;">
+                  <strong><code>npm run build</code></strong><br />
+                  Builds optimized production assets to the <code>dist/</code> folder
+                </li>
+              </ul>
+            </article>
+
+            <article style="margin-bottom: 3rem;">
+              <h2>Template Features</h2>
+              <ul>
+                <li><strong>TypeScript 5</strong> – Type-safe JavaScript with strict mode</li>
+                <li><strong>Webpack 5</strong> – Modern bundling with hot reload</li>
+                <li><strong>Sass/SCSS</strong> – Powerful CSS preprocessing</li>
+                <li><strong>Babel</strong> – ES6+ JavaScript transpilation</li>
+                <li><strong>ts-loader</strong> – TypeScript compilation for Webpack</li>
+                <li><strong>Animate.css</strong> – Ready-to-use CSS animations</li>
+                <li><strong>Multi-page support</strong> – Add pages in <code>src/pages/</code></li>
+                <li><strong>Asset pipeline</strong> – Automatic image and font optimization</li>
+              </ul>
+            </article>
+
+            <article style="margin-bottom: 3rem;">
+              <h2>TypeScript Configuration</h2>
+              <p>
+                The template includes a <code>tsconfig.json</code> with recommended
+                settings:
+              </p>
+              <ul>
+                <li><strong>Strict mode enabled</strong> – Catch errors early</li>
+                <li><strong>ES2015 target</strong> – Modern JavaScript output</li>
+                <li><strong>ESNext modules</strong> – Tree-shaking support</li>
+                <li><strong>Source maps</strong> – Debug TypeScript in browser</li>
+              </ul>
+              <p>
+                Customize <code>tsconfig.json</code> to fit your project needs.
+              </p>
+            </article>
+
+            <article style="margin-bottom: 3rem;">
+              <h2>Writing TypeScript</h2>
+              <p>
+                The main TypeScript file is <code>src/js/app.ts</code>. Example:
+              </p>
+              <pre style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px; overflow-x: auto;"><code>const select = (selector: string): HTMLElement | null => {
+  return document.querySelector(selector);
+};
+
+const updateYear = (): void => {
+  const yearElement = select('#year');
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear().toString();
+  }
+};</code></pre>
+              <p>
+                TypeScript provides autocomplete, type checking, and better IDE
+                support for safer code.
+              </p>
+            </article>
+
+            <article style="margin-bottom: 3rem;">
+              <h2>Customization</h2>
+              <p>
+                All source files are in the <code>src/</code> directory and are
+                yours to customize:
+              </p>
+              <ul>
+                <li>
+                  <strong>HTML</strong> – Edit <code>src/index.html</code> and files
+                  in <code>src/pages/</code>
+                </li>
+                <li>
+                  <strong>Styles</strong> – Modify <code>src/scss/app.scss</code> and
+                  create partials
+                </li>
+                <li>
+                  <strong>TypeScript</strong> – Add functionality in
+                  <code>src/js/app.ts</code>
+                </li>
+                <li>
+                  <strong>Assets</strong> – Place images in
+                  <code>src/assets/images/</code>
+                </li>
+              </ul>
+            </article>
+
+            <article style="margin-bottom: 3rem;">
+              <h2>Adding New Pages</h2>
+              <p>
+                Create a new HTML file in <code>src/pages/</code> and Webpack will
+                automatically generate it:
+              </p>
+              <ol>
+                <li>Create <code>src/pages/about.html</code></li>
+                <li>Restart the dev server</li>
+                <li>Access at <code>http://localhost:9000/about.html</code></li>
+              </ol>
+            </article>
+
+            <article style="margin-bottom: 3rem;">
+              <h2>Type Definitions</h2>
+              <p>
+                Install type definitions for third-party libraries:
+              </p>
+              <pre style="background: #1a1a1a; color: #fff; padding: 1.5rem; border-radius: 8px; overflow-x: auto;"><code>npm install --save-dev @types/library-name</code></pre>
+              <p>
+                This enables TypeScript autocomplete and type checking for external
+                packages.
+              </p>
+            </article>
+
+            <article style="margin-bottom: 3rem;">
+              <h2>Deployment</h2>
+              <p>Build your project for production:</p>
+              <pre style="background: #1a1a1a; color: #fff; padding: 1.5rem; border-radius: 8px; overflow-x: auto;"><code>npm run build</code></pre>
+              <p>
+                TypeScript is compiled to JavaScript during the build. Deploy the
+                <code>dist/</code> folder to any static hosting service:
+              </p>
+              <ul>
+                <li>Netlify</li>
+                <li>Vercel</li>
+                <li>GitHub Pages</li>
+                <li>AWS S3</li>
+                <li>Any CDN or web server</li>
+              </ul>
+            </article>
+
+            <article style="margin-bottom: 3rem;">
+              <h2>Need Help?</h2>
+              <p>
+                <a href="https://github.com/misterzik/create-kiss" target="_blank">
+                  View on GitHub
+                </a>
+                for issues, contributions, and updates.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="kiss-footer">
+      <div class="container footer-layout">
+        <p>
+          &copy; <span id="year"></span> K.I.S.S Starter · Crafted by Keepin' It
+          Simply Stupid
+        </p>
+        <p>
+          <a href="https://github.com/misterzik" target="_blank" rel="noopener">
+            GitHub
+          </a>
+          <span class="divider">·</span>
+          <a href="index.html">Home</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

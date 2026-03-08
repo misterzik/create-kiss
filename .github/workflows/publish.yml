@@ -22,11 +22,17 @@ jobs:
       - name: Install CLI dependencies
         run: npm ci
 
-      - name: Install template dependencies
-        run: npm ci --prefix template
+      - name: Install JS template dependencies
+        run: npm ci --prefix template-js
 
-      - name: Build template
-        run: npm run build --prefix template
+      - name: Build JS template
+        run: npm run build --prefix template-js
+
+      - name: Install TS template dependencies
+        run: npm ci --prefix template-ts
+
+      - name: Build TS template
+        run: npm run build --prefix template-ts
 
       - name: Run tests (if any)
         run: npm test --if-present
@@ -63,11 +69,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install template dependencies
-        run: npm ci --prefix template
+      - name: Install JS template dependencies
+        run: npm ci --prefix template-js
 
-      - name: Verify template build
-        run: npm run build --prefix template
+      - name: Verify JS template build
+        run: npm run build --prefix template-js
+
+      - name: Install TS template dependencies
+        run: npm ci --prefix template-ts
+
+      - name: Verify TS template build
+        run: npm run build --prefix template-ts
 
       - name: Publish to npm
         env:

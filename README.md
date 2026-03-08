@@ -15,9 +15,10 @@ npm run start
 
 What the command does:
 1. Creates `my-landing/` (or fails if the folder already exists).
-2. Copies the template (including Webpack config, assets, and scripts).
-3. Normalizes the package name inside the generated `package.json` (e.g., `"My Cool App"` ➜ `"my-cool-app"`).
-4. Prints the next steps you need to run locally.
+2. **Prompts you to choose between JavaScript or TypeScript template.**
+3. Copies the selected template (including Webpack config, assets, and scripts).
+4. Normalizes the package name inside the generated `package.json` (e.g., `"My Cool App"` ➜ `"my-cool-app"`).
+5. Prints the next steps you need to run locally.
 
 > Tip: You can substitute `npx` with `npm create @misterzik/kiss@latest` or install globally via `npm install -g @misterzik/create-kiss`.
 
@@ -25,7 +26,9 @@ What the command does:
 
 The generated project contains:
 
-- `src/` with HTML pages, SCSS, JS, and assets.
+- `src/` with HTML pages, SCSS, and assets.
+- **JavaScript template**: Vanilla JS with Babel transpilation.
+- **TypeScript template**: TypeScript with ts-loader, includes `tsconfig.json` and type definitions.
 - `webpack.config.js` configured for multi-page output.
 - Scripts:
   - `npm run start` – launches `webpack-dev-server` with HMR.
@@ -38,7 +41,7 @@ All feature work happens on the `dev` branch. Please avoid pushing directly to `
 1. Clone the repo and install dependencies: `npm install`.
 2. Create a feature branch off `dev`: `git checkout dev && git pull && git checkout -b feat/my-change`.
 3. Run tests: `npm test` (uses [Vitest](https://vitest.dev/)).
-4. Make your changes under `template/` or the CLI in `bin/create-kiss.js`.
+4. Make your changes under `template-js/`, `template-ts/`, or the CLI in `bin/create-kiss.js`.
 5. Rebuild to ensure the scaffold still works: `npm run build`.
 6. Push your branch to `origin` and open a pull request into `dev`.
 

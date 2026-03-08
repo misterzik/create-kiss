@@ -86,10 +86,6 @@ module.exports = {
         { from: 'src/assets', to: 'assets' }
       ]
     }),
-    new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-    }),
     new MiniCssExtractPlugin({
       filename: "css/app.css",
     }),
