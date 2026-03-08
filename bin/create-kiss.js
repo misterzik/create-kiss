@@ -5,7 +5,20 @@ const path = require('path');
 const readline = require('readline');
 
 const args = process.argv.slice(2);
-const rawProjectName = args[0] || 'kiss-app';
+
+// Parse arguments
+let rawProjectName = 'kiss-app';
+let templateFlag = null;
+
+for (let i = 0; i < args.length; i++) {
+  if (args[i] === '--template' && args[i + 1]) {
+    templateFlag = args[i + 1];
+    i++; // Skip next arg
+  } else if (!args[i].startsWith('--')) {
+    rawProjectName = args[i];
+  }
+}
+
 const targetDir = path.resolve(process.cwd(), rawProjectName);
 
 const formatPackageName = (name) => name
@@ -30,6 +43,20 @@ const ensureDirectory = (dir) => {
 
 const promptTemplateChoice = () => {
   return new Promise((resolve) => {
+    // If template flag is provided, use it
+    if (templateFlag) {
+      const type = templateFlag.toLowerCase();
+      if (type === 'ts' || type === 'typescript') {
+        return resolve('typescript');
+      }
+      return resolve('javascript');
+    }
+
+    // If not in interactive mode (CI/testing), default to JavaScript
+    if (!process.stdin.isTTY) {
+      return resolve('javascript');
+    }
+
     const rl = readline.createInterface({
       input: process.stdin,
       output: process.stdout
@@ -91,7 +118,10 @@ const main = async () => {
     ensureDirectory(targetDir);
     
     const templateType = await promptTemplateChoice();
-    console.log(`\nUsing ${templateType === 'typescript' ? 'TypeScript' : 'JavaScript'} template...`);
+    
+    if (process.stdin.isTTY || templateFlag) {
+      console.log(`\nUsing ${templateType === 'typescript' ? 'TypeScript' : 'JavaScript'} template...`);
+    }
     
     copyTemplate(targetDir, templateType);
     flattenNestedSrc(targetDir);

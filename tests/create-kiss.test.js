@@ -7,8 +7,8 @@ const { spawnSync } = require('child_process');
 
 const cliPath = path.resolve(__dirname, '..', 'bin', 'create-kiss.js');
 
-const runCli = (cwd, projectName) => {
-  const result = spawnSync(process.execPath, [cliPath, projectName], {
+const runCli = (cwd, projectName, template = 'js') => {
+  const result = spawnSync(process.execPath, [cliPath, projectName, '--template', template], {
     cwd,
     stdio: 'pipe',
     encoding: 'utf8'
@@ -54,5 +54,29 @@ describe('create-kiss CLI', () => {
     const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
 
     expect(pkg.name).toBe('my-cool-app');
+  });
+
+  it('creates TypeScript template when --template ts is specified', () => {
+    const projectName = 'test-ts-app';
+    runCli(tempDir, projectName, 'ts');
+
+    const projectDir = path.join(tempDir, projectName);
+
+    expect(fs.existsSync(path.join(projectDir, 'src'))).toBe(true);
+    expect(fs.existsSync(path.join(projectDir, 'src', 'js', 'app.ts'))).toBe(true);
+    expect(fs.existsSync(path.join(projectDir, 'tsconfig.json'))).toBe(true);
+    expect(fs.existsSync(path.join(projectDir, 'webpack.config.js'))).toBe(true);
+  });
+
+  it('creates JavaScript template when --template js is specified', () => {
+    const projectName = 'test-js-app';
+    runCli(tempDir, projectName, 'js');
+
+    const projectDir = path.join(tempDir, projectName);
+
+    expect(fs.existsSync(path.join(projectDir, 'src'))).toBe(true);
+    expect(fs.existsSync(path.join(projectDir, 'src', 'js', 'app.js'))).toBe(true);
+    expect(fs.existsSync(path.join(projectDir, 'tsconfig.json'))).toBe(false);
+    expect(fs.existsSync(path.join(projectDir, 'webpack.config.js'))).toBe(true);
   });
 });
