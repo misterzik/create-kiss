@@ -10,8 +10,20 @@ npmrc-local.example
 npmrc-private.txt
 .env
 
-# 
+# Development files
 docs/
 scripts/
+.github/
+
+# Template artifacts - don't ship these
 template-js/node_modules/
+template-js/dist/
+template-js/package-lock.json
 template-ts/node_modules/
+template-ts/dist/
+template-ts/package-lock.json
+
+# Test files
+tests/
+*.test.js
+vitest.config.mjs
